@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: openvino-helloworld-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: openvino-helloworld
+      labels:
+        app: openvino-helloworld
+    spec:
+      containers:
+      - name: openvino-helloworld
+        imagePullPolicy: IfNotPresent
+        image: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        command:
+        - /bin/bash
+        - -c
+        - '/app/run.sh'
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: openvino-helloworld-svc
+spec:
+  selector:
+    app: openvino-helloworld
+
+
